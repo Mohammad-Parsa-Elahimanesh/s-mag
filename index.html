@@ -3,13 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مجله تحلیلی ثانیه</title>
+  <title>تحلیل وسایل نقلیه خانوار | مطالعه جامع مالکیت خودرو در ایران</title>
+  <meta name="description" content="تحلیل پیشرفته داده‌های مالکیت وسایل نقلیه خانوار در ایران با استفاده از مدل‌سازی رگرسیون و تجزیه و تحلیل دهک‌های درآمدی">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="icon" href="logo.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="fonts/Yekan.css">
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Additional inline styles for enhanced design -->
+  <style>
+    /* Custom enhancements for the modern design */
+    .min-vh-100 {
+      min-height: 100vh;
+    }
+    
+    .analysis-content {
+      margin-top: 2rem;
+    }
+    
+    .scrolled {
+      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+  </style>
   <style>
     * {
       font-family: 'Yekan', Tahoma, sans-serif;
@@ -342,164 +359,246 @@
   </style>
 </head>
 <body>
-  <header class="bg-primary text-white py-4 mb-5 sticky-header">
-    <div class="container d-flex align-items-center justify-content-between" dir="rtl">
-      <div class="d-flex align-items-center">
-        <div class="logo-placeholder me-4">
-          <img src="logo.jpeg" alt="logo" class="img-fluid" style="max-height:100px;">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm" style="backdrop-filter: blur(10px);">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#hero">
+        <img src="logo.jpeg" alt="Logo" height="40" class="me-3">
+        <div>
+          <h5 class="mb-0 fw-bold text-primary">تحلیل وسایل نقلیه خانوار</h5>
+          <small class="text-muted">مطالعه جامع مالکیت خودرو در ایران</small>
         </div>
-        <div class="me-3">
-          <h1 class="h2 mb-0">مجله تحلیلی ثانیه</h1>
-          <p class="lead mb-0">دقیق‌تر از دقیقه</p>
-        </div>
-      </div>
-      <div class="team-names" dir="ltr">
-        <div>کسری عربی</div>
-        <div>محمدپارسا الهی منش</div>
-        <div>محمدباقر برکند</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#executive-summary">خلاصه اجرایی</a></li>
+          <li class="nav-item"><a class="nav-link" href="#overview">نمای کلی</a></li>
+          <li class="nav-item"><a class="nav-link" href="#bicycle-analysis">تحلیل دوچرخه</a></li>
+          <li class="nav-item"><a class="nav-link" href="#motorcycle-analysis">تحلیل موتور</a></li>
+          <li class="nav-item"><a class="nav-link" href="#car-analysis">تحلیل خودرو</a></li>
+          <li class="nav-item"><a class="nav-link" href="#methodology">روش‌شناسی</a></li>
+        </ul>
       </div>
     </div>
-  </header>
-  
-  <main class="container">
-    <h1 class="subtitle">در جست‌و‌جوی تفرج‌گاه‌ها</h1>
-    
-    <section class="section-card">
-      <h2 class="mb-3">مقدمه</h2>
-      <p>
-        در این تحلیل، با توجه به فقدان روش‌های مؤثر برای شناسایی مقاصد گردشگری در کشور، بر آن شدیم تا با رویکردی جامع به بررسی این موضوع بپردازیم. در گام‌های ابتدایی، با تحلیل‌های پایه به شناسایی مقاصد سفر، الگوهای مسافرتی و حجم تردد مسافران می‌پردازیم و در ادامه، با به‌کارگیری اصلاحات تدریجی در رویکرد، به تحلیلی کامل‌تر و جامع‌تر خواهیم رسید.
-      </p>
-    </section>
+  </nav>
 
-    <section class="section-card">
-      <h2 class="mb-3">نمودار دایره‌ای ترافیک ورودی و خروجی استان‌ها
-      </h2>
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="viz-container">
-            <div class="viz-header">ترافیک کل</div>
-            <div class="viz-body ratio ratio-1x1">
-              <iframe src="results/regional_traffic_pie.html" frameborder="0"></iframe>
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center min-vh-100">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-3 fw-bold mb-4 gradient-text">تحلیل وسایل نقلیه خانوار</h1>
+          <h2 class="h3 text-muted mb-4">مدل‌سازی پیشرفته مالکیت خودرو در ایران</h2>
+          <p class="lead mb-5 lh-lg">
+            مطالعه‌ای جامع بر روی الگوهای مالکیت وسایل نقلیه خانوار در ایران با تأکید بر تحلیل تأثیر دهک درآمدی، 
+            محل سکونت (شهری/روستایی) و روندهای زمانی بر انتخاب وسیله نقلیه
+          </p>
+          <div class="research-metadata">
+            <div class="row text-center">
+              <div class="col-md-3">
+                <div class="metadata-card">
+                  <i class="fas fa-database text-primary mb-2"></i>
+                  <h6 class="fw-bold">منبع داده</h6>
+                  <small>بودجه خانوار ایران</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="metadata-card">
+                  <i class="fas fa-chart-line text-primary mb-2"></i>
+                  <h6 class="fw-bold">دقت مدل</h6>
+                  <small>R² > 0.96</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="metadata-card">
+                  <i class="fas fa-calendar text-primary mb-2"></i>
+                  <h6 class="fw-bold">بازه زمانی</h6>
+                  <small>۱۳۹۰-۱۴۰۰</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="metadata-card">
+                  <i class="fas fa-users text-primary mb-2"></i>
+                  <h6 class="fw-bold">نمونه</h6>
+                  <small>کل خانوارهای کشور</small>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <div class="viz-container">
-            <div class="viz-header">نسبت به جمعیت</div>
-            <div class="viz-body ratio ratio-1x1">
-              <iframe src="results/regional_traffic_pie_normalized.html" frameborder="0"></iframe>
-            </div>
+          <div class="hero-cta mt-5">
+            <a href="#executive-summary" class="btn btn-primary btn-lg px-5 py-3 rounded-pill me-3">
+              <i class="fas fa-play ms-2"></i>
+              شروع مطالعه
+            </a>
+            <a href="#methodology" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill">
+              <i class="fas fa-microscope ms-2"></i>
+              روش‌شناسی
+            </a>
           </div>
         </div>
       </div>
-      <div class="method-description">
-        <span class="method-title explanation">توضیح روش</span>
-        <p class="text-gray-700">
-          در این روش، مجموع ترددهای ورودی و خروجی هر استان طی یک بازه زمانی مشخص محاسبه شده و به‌صورت دو نمودار دایره‌ای نمایش داده می‌شود: یکی بر اساس مقدار خام تردد و دیگری نرمال‌شده نسبت به جمعیت استان. نرمال‌سازی امکان مقایسه منصفانه‌تر بین استان‌ها با جمعیت‌های متفاوت را فراهم می‌سازد.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title usage">کاربرد در گردشگری</span>
-        <p class="text-gray-700">
-          افزایش حجم کلی تردد می‌تواند به‌عنوان یک شاخص اولیه برای جذب گردشگر در نظر گرفته شود، چرا که معمولاً ورود مسافران منجر به افزایش رفت‌وآمد در منطقه می‌شود.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title limitations">محدودیت‌ها</span>
-        <p class="text-gray-700">
-          این شاخص علاوه بر به حساب آوردن شهرهای میانی، شامل تمامی انواع سفر، از جمله سفرهای کاری، روزمره یا با اهداف غیرگردشگری نیز می‌شود. بنابراین تفکیک دقیق گردشگران از دیگر مسافران ممکن نیست و باید این موضوع در تحلیل‌ها مد نظر قرار گیرد.
-        </p>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section-card">
-      <h2 class="mb-3">نمودار تغییرات ورودی به شهرها در بازه‌های شش‌ماهه
-      </h2>
-      <div class="viz-container">
-        <div class="viz-body ratio ratio-16x9">
-          <iframe src="results/city_entries_6M.html" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="method-description">
-        <span class="method-title explanation">توضیح روش</span>
-        <p class="text-gray-700">
-          در این تحلیل، تعداد ورودی افراد به هر شهر در بازه‌های شش‌ماهه ثبت شده و به‌صورت نمودار زمانی نمایش داده می‌شود. این رویکرد امکان بررسی روندهای فصلی و تغییرات در حجم تردد را فراهم می‌سازد.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title usage">کاربرد در گردشگری</span>
-        <p class="text-gray-700">
-          با استفاده از این روش، می‌توان تغییرات فصلی در میزان سفرها را رصد کرد و زمان‌های اوج یا رکود گردشگری را شناسایی نمود؛ برای مثال، افزایش ورودی در فصل تابستان می‌تواند نشانه‌ای از رشد گردشگری تفریحی در آن دوره باشد.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title limitations">محدودیت‌ها</span>
-        <p class="text-gray-700">
-          این شاخص تنها ورود افراد به شهر را نشان می‌دهد، بدون آن‌که بتواند اهداف سفر را مشخص کند؛ در نتیجه، نمی‌توان به‌طور دقیق تشخیص داد که چه میزان از ترددها مربوط به گردشگران واقعی است. همچنین در برخی موارد، ورود ثبت‌شده ممکن است ناشی از عبور ترانزیتی، تعویض مسیر، یا توقف‌های کوتاه باشد که لزوماً به معنی سفر به مقصد آن شهر نیست و می‌تواند در تحلیل نهایی ایجاد انحراف کند.
-        </p>
-      </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">نمودار تفاضل ورودی و خروجی شهرها
-      </h2>
-      <div class="viz-container">
-        <div class="viz-body ratio ratio-16x9">
-          <iframe src="results/imbalance.html" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="method-description">
-        <span class="method-title explanation">توضیح روش</span>
-        <p class="text-gray-700">
-          در این رویکرد، اختلاف تعداد ورودی‌ها و خروجی‌ها برای هر شهر محاسبه می‌شود تا مناطق با خالص ورود یا خروج مسافر شناسایی شوند. این تحلیل تصویری از جابه‌جایی نسبی جمعیت در سطح شهرها ارائه می‌دهد.        
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title usage">کاربرد در گردشگری</span>
-        <p class="text-gray-700">
-          مقادیر مثبت می‌توانند نشان‌دهنده ورود خالص گردشگران و افزایش موقت جمعیت در یک شهر باشند؛ به‌ویژه در مناطق گردشگرپذیر که در دوره‌هایی خاص شاهد افزایش مسافران هستند.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title limitations">محدودیت‌ها</span>
-        <p class="text-gray-700">
-          این شاخص نرمال‌سازی نشده و تحت تأثیر مستقیم اندازه جمعیت و حجم کلی تردد هر شهر قرار دارد. همچنین به‌دلیل حساسیت بالا، خطاهای کوچک در داده‌های ورودی می‌توانند تأثیر چشم‌گیری در نتایج نهایی داشته باشند و تفسیر نمودار را دشوار کنند.
-        </p>
-      </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">نقشه‌های کلاسترینگ مراکز استان‌ها</h2>
+  <!-- Executive Summary -->
+  <section id="executive-summary" class="section-padding bg-light">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="viz-container">
-            <div class="viz-header">
-              <span class="year-label">سال ۱۳۹۸</span>
+        <div class="col-lg-10 mx-auto">
+          <div class="section-header text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">خلاصه اجرایی</h2>
+            <p class="lead text-muted">یافته‌های کلیدی و نتایج تحلیل</p>
+          </div>
+          
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="insight-card">
+                <div class="insight-icon">
+                  <i class="fas fa-exclamation-triangle text-warning"></i>
+                </div>
+                <h4 class="insight-title">۴۰٪ خانوارها بدون وسیله نقلیه</h4>
+                <p class="insight-description">
+                  علی‌رغم رشد مداوم سطح رفاه، همچنان ۴۰ درصد خانوارهای ایرانی فاقد هرگونه وسیله نقلیه شخصی هستند.
+                </p>
+              </div>
             </div>
-            <div class="viz-body ratio ratio-1x1">
-              <img src="results/1398_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۳۹۸">
+            
+            <div class="col-md-6">
+              <div class="insight-card">
+                <div class="insight-icon">
+                  <i class="fas fa-chart-line text-success"></i>
+                </div>
+                <h4 class="insight-title">رشد پایدار مالکیت خودرو</h4>
+                <p class="insight-description">
+                  مالکیت خودرو در تمام دهک‌ها روند صعودی مشابهی داشته، با دقت پیش‌بینی بالای ۹۶٪ در مدل‌های رگرسیون.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="insight-card">
+                <div class="insight-icon">
+                  <i class="fas fa-bicycle text-info"></i>
+                </div>
+                <h4 class="insight-title">دوچرخه: پیچیده‌ترین الگو</h4>
+                <p class="insight-description">
+                  مالکیت دوچرخه در شهر با وضع مالی ارتباط قوی دارد، در حالی که در روستا این رابطه معنادار نیست.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="insight-card">
+                <div class="insight-icon">
+                  <i class="fas fa-motorcycle text-primary"></i>
+                </div>
+                <h4 class="insight-title">موتور: سهم ثابت زمانی</h4>
+                <p class="insight-description">
+                  موتور جایگاه ثابتی در سبد وسایل نقلیه خانوار دارد و عامل زمان در مدل آن ظاهر نمی‌شود.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="key-findings mt-5">
+            <h3 class="h4 fw-bold mb-4 text-center">نتایج کلیدی مدل‌سازی</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <div class="metric-card">
+                  <div class="metric-value text-primary">R² = 0.968</div>
+                  <div class="metric-label">دقت مدل دوچرخه</div>
+                </div>
+              </div>
+              <div class="col-md-4 text-center">
+                <div class="metric-card">
+                  <div class="metric-value text-success">R² = 0.903</div>
+                  <div class="metric-label">دقت مدل موتور</div>
+                </div>
+              </div>
+              <div class="col-md-4 text-center">
+                <div class="metric-card">
+                  <div class="metric-value text-info">R² = 0.998</div>
+                  <div class="metric-label">دقت مدل خودرو</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="viz-container">
-            <div class="viz-header">
-              <span class="year-label">سال ۱۳۹۹</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Overview -->
+  <section id="overview" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="section-header text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">نمای کلی داده‌ها</h2>
+            <p class="lead text-muted">بررسی اولیه توزیع وسایل نقلیه در خانوارهای ایرانی</p>
+          </div>
+          
+          <div class="analysis-content">
+            <p class="analysis-paragraph">
+              قبل از بررسی متخصصانه هر وسیله، نگاهی به کلیات داده‌ها می‌اندازیم. 
+              این تحلیل بر اساس داده‌های بودجه خانوار ایران و با تمرکز بر وسیله نقلیه ممتاز خانوار انجام شده است.
+            </p>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">سهم وسایل نقلیه به عنوان وسیله ممتاز خانوار</h4>
+              </div>
+              <div class="viz-body">
+                <img src="results/1.jpeg" class="img-fluid rounded shadow-sm" alt="نمودار سهم وسایل نقلیه">
+              </div>
+              <div class="viz-description">
+                <p>
+                  این نمودار سهم هر وسیله را به عنوان وسیله نقلیه ممتاز خانوار در سال‌های مختلف نشان می‌دهد. 
+                  اگرچه سطح رفاهی خانوار و میزان داشتن اتوموبیل میان خانوارها همواره افزایش داشته، 
+                  ولی همچنان دیده می‌شود که ۴۰ درصد خانوارها هنوز از نداشتن حتی یک وسیله نقلیه رنج می‌برند.
+                </p>
+              </div>
             </div>
-            <div class="viz-body ratio ratio-1x1">
-              <img src="results/1399_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۳۹۹">
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">توزیع وسایل نقلیه بر اساس دهک درآمدی</h4>
+              </div>
+              <div class="viz-body">
+                <img src="results/2.jpeg" class="img-fluid rounded shadow-sm" alt="نمودار توزیع دهکی">
+              </div>
+              <div class="viz-description">
+                <p>
+                  این نمودار نشان می‌دهد که هر وسیله، وسیله ممتاز چند خانوار از دهک‌های مختلف است. 
+                  مطابق با انتظار، روند کاهشی نداشتن وسیله نقلیه را می‌بینیم. 
+                  همچنین سهم اتوموبیل با افزایش دهک بیشتر و بیشتر می‌شود.
+                </p>
+              </div>
+            </div>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">رشد مالکیت خودرو در دهک‌های مختلف</h4>
+              </div>
+              <div class="viz-body">
+                <iframe src="results/3.html" class="chart-iframe" title="رشد مالکیت خودرو"></iframe>
+              </div>
+              <div class="viz-description">
+                <p>
+                  این نمودار رشد میزان مالکیت خودرو در دهک‌های مختلف را طی سالیان به تصویر می‌کشد. 
+                  همانطور که دیده می‌شود، اگرچه مقادیر در دهک‌های مختلف متفاوت است، 
+                  ولی روند صعودی مشابهی دارند.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="viz-container">
-            <div class="viz-header">
-              <span class="year-label">سال ۱۴۰۰</span>
-            </div>
-            <div class="viz-body ratio ratio-1x1">
-              <img src="results/1400_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۴۰۰">
-            </div>
-          </div>
+      </div>
+    </div>
+  </section>
         </div>
         <div class="col-md-6 mb-4">
           <div class="viz-container">
@@ -515,257 +614,597 @@
       <div class="method-description">
         <span class="method-title explanation">توضیح روش</span>
         <p class="text-gray-700">
-          برای هر مرکز استان، یک بردار ۲۴‌بعدی شامل مجموع ترددهای ورودی و خروجی ماهانه (۱۲ ماه × ۲) ساخته می‌شود. پس از نرمال‌سازی این بردارها برای حذف اثر مقیاس، استان‌هایی با الگوهای زمانی مشابه تردد، با استفاده از الگوریتم‌های خوشه‌بندی در گروه‌هایی مشترک قرار می‌گیرند. نتیجه به‌صورت نقشه‌هایی از گروه‌های مشابه نمایش داده می‌شود.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title usage">کاربرد در گردشگری</span>
-        <p class="text-gray-700">
-          استان‌هایی که در یک گروه قرار می‌گیرند، احتمالاً از نظر الگوی زمانی تردد (فصلی یا ماهانه) مشابه یکدیگر هستند. این می‌تواند نشان‌دهنده شباهت در رفتار گردشگری، فصل‌های اوج سفر یا نوع جذب مسافر باشد و به طراحی سیاست‌های منطقه‌ای کمک کند.
-        </p>
-      </div>
-      <div class="method-description">
-        <span class="method-title limitations">محدودیت‌ها</span>
-        <p class="text-gray-700">
-          از آن‌جا که تمام بردارها نرمال‌سازی شده‌اند، حجم واقعی تردد در تحلیل لحاظ نمی‌شود؛ در نتیجه، استان‌های پرتردد و کم‌تردد ممکن است در یک گروه قرار گیرند. بنابراین این روش برای شناسایی مقاصد اصلی گردشگری مناسب نیست، بلکه صرفاً الگوهای زمانی تردد را مقایسه می‌کند.
-        </p>
-      </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">میانگین گردشگری شهرها</h2>
-      <div class="viz-container">
-        <div class="viz-body ratio ratio-16x9">
-          <iframe src="results/Taverage.html" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="method-description">
-        <span class="method-title explanation">توضیح روش</span>
-        <p class="text-gray-700">
-          در این نقشه، میانگین گردشگری در شهرهای مختلف کشور نمایش داده شده است. رنگ‌ها و اندازه‌های متفاوت نشان‌دهنده سطوح مختلف گردشگری در هر منطقه است.
-        </p>
-      </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">میانه گردشگری شهرها</h2>
-      <div class="viz-container">
-        <div class="viz-body ratio ratio-16x9">
-          <iframe src="results/Tmedian.html" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="method-description">
-        <span class="method-title explanation">توضیح روش</span>
-        <p class="text-gray-700">
-          در این نقشه، میانه گردشگری شهرهای مختلف کشور نمایش داده شده است. استفاده از میانه به جای میانگین می‌تواند تصویر دقیق‌تری از وضعیت معمول تردد ارائه دهد، زیرا میانه کمتر تحت تأثیر داده‌های پرت قرار می‌گیرد.
-        </p>
-      </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">درصد مقصد گردشگری بودن شهرها</h2>
-      <div class="viz-container">
-        <div class="viz-body ratio ratio-16x9">
-          <iframe src="results/Tpercent.html" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="method-description">
-        <span class="method-title explanation">توضیح روش</span>
-        <p class="text-gray-700">
-          در این روش، میزان درصدی که هر شهر به عنوان مقصد گردشگری (و نه مبدا) انتخاب شده، آمده‌است. درصد بالا می‌تواند بیانگر همیشگی بودن یک شهر به عنوان مقصد سفر باشد.
-        </p>
-      </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">تفرج‌گاه‌ها یا مقاصد گردشگری؟</h2>
-      <p>
-        هدف اصلی پارامتر گردشگری، یافتن «تفرج‌گاه‌»هاست نه صرفاً «مقاصد گردشگری»!
-        میان این دو، تفاوت‌های مهمی وجود دارد. مقصد گردشگری معمولاً دارای جاذبه‌ای خاص است و به‌دلیل توزیع نابرابر این جاذبه‌ها در سطح کشور، اغلب دسترسی دشوارتری دارند. همین امر باعث می‌شود که سفر به آن‌ها بیشتر برنامه‌ریزی‌شده، طولانی‌مدت و با استفاده از وسیله‌هایی مانند هواپیما یا قطار انجام شود.
-      </p>
-      <p>
-        در مقابل، تفرج‌گاه‌ها مکان‌هایی‌اند که برای تغییر حال و هوا و سفرهای کوتاه‌مدت و سریع مورد استفاده قرار می‌گیرند.
-        تفاوت مهم دیگر این است که جاذبه‌های گردشگری معمولاً یک‌بارمصرف هستند؛ یعنی پس از یک‌بار بازدید، انگیزه‌ای برای بازگشت مجدد وجود ندارد. اما تفرج‌گاه‌ها می‌توانند بارها و بارها مورد استفاده قرار گیرند.
-      </p>
-      <p>
-        به‌عنوان نمونه، در ایران افراد بسیاری دارای ویلاهایی در تفرج‌گاه‌ها هستند و حتی هفتگی به آن‌ها سر می‌زنند.
-        با در نظر گرفتن این نکات، ما تمرکز خود را بر یافتن تفرج‌گاه‌ها قرار داده‌ایم.
-      </p>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">روش تحلیل</h2>
-      
-      <div class="method-box mb-4">
-        <h3>روش پایه</h3>
-        <p>
-            <strong>ارزش توریستی = (میانگین زمان خروجی‌ها) − (میانگین زمان ورودی‌ها)</strong><br>
-            محاسبه اختلاف مدت زمان اقامت بین دو گروه:
-        </p>
-        
-        <div>
-            <strong>گردشگران ورودی:</strong>
-            افراد ساکن در <u>شهرهای دیگر</u> که به شهر مورد نظر سفر می‌کنند.
-        </div>
-        
-        <div>
-            <strong>گردشگران خروجی:</strong>
-            ساکنان شهر مورد نظر که به <u>شهرهای دیگر</u> سفر می‌کنند و زمان خود را آنجا می‌گذرانند.
-        </div>
-      </div>
-
-      <div class="method-box mb-4">
-        <h3>بازه‌های نرمال چیست؟</h3>
-        <ul>
-            <li>روزهای عادی (مثلاً دوشنبه‌ها) که <u>در شروع و پایان آنها تعطیلی وجود ندارد</u>.</li>
-            <li>زمانی که انتظار می‌رود اکثر مردم در <u>مکان اصلی سکونت</u> خود باشند.</li>
-            <li>تحلیل داده‌ها فقط در این بازه‌ها انجام می‌شود تا تأثیر عوامل موقت حذف شود.</li>
-        </ul>
-      </div>
-
-      <div class="method-box mb-4">
-        <h3>نسخه دقیق‌تر</h3>
-        <ul>
-            <li><strong>حذف داده‌های نامتعادل:</strong>
-                نادیده گرفتن بازه‌هایی که تعداد ورودی یا خروجی به شدت بیشتر از دیگری است.
-            </li>
+  <!-- Bicycle Analysis -->
+  <section id="bicycle-analysis" class="section-padding bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="section-header text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">تحلیل دوچرخه</h2>
+            <p class="lead text-muted">پیچیده‌ترین الگوی مالکیت وسیله نقلیه</p>
+          </div>
+          
+          <div class="analysis-content">
+            <div class="intro-text">
+              <p class="analysis-paragraph">
+                شاید بتوان گفت که دوچرخه سخت‌ترین وسیله نقلیه برای پیش‌بینی و مدل‌سازی است! 
+                عوامل مختلف زیادی بر روی داشتن دوچرخه توسط یک خانوار تأثیر می‌گذارد. 
+                کودکان، افراد مسن، ورزشکاران، مستمندان و یا ثروتمندان همگی از دوچرخه استفاده می‌کنند.
+              </p>
+            </div>
             
-            <li><strong>تمرکز بر داده‌های معتبر:</strong>
-                فقط شهرهایی بررسی می‌شوند که <u>داده‌های کافی</u> از روزهای مختلف داشته باشند.
-            </li>
-            
-            <li><strong>حذف اقامت‌های کوتاه:</strong>
-                فقط بازدیدهایی که بیش از ۱ ساعت در شهر مانده‌اند محاسبه می‌شوند.
-            </li>
-        </ul>
-      </div>
-
-      <div class="method-box mb-4">
-        <h3>مثال</h3>
-        <p>
-            در یک بازه نرمال:<br>
-            - ۱۲۰۰ گردشگر ورودی: میانگین ۱۲ ساعت در شهر بمانند.<br>
-            - ۹۰۰ گردشگر خروجی: میانگین ۸ ساعت در <u>شهرهای مقصد</u> بمانند.<br>
-            - ارزش توریستی = <strong>۴+</strong> (شهر برای گردشگران ورودی جذاب‌تر است)
-        </p>
-      </div>
-
-      <div class="method-box mb-4">
-        <h3>چرا این روش دقیق است؟</h3>
-        <ul>
-            <li>مقایسه‌ی هوشمندانه بین رفتار گردشگران ورودی و خروجی.</li>
-            <li>استفاده از بازه‌های زمانی بدون تأثیر تعطیلات.</li>
-            <li>اندازه‌گیری بر اساس <u>زمان واقعی حضور</u> به جای تعداد صرف.</li>
-        </ul>
-      </div>
-      
-      <div class="accordion mt-4" id="technicalDetails">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTechnical">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTechnical" aria-expanded="false" aria-controls="collapseTechnical">
-              توضیحات فنی
-            </button>
-          </h2>
-          <div id="collapseTechnical" class="accordion-collapse collapse" aria-labelledby="headingTechnical" data-bs-parent="#technicalDetails">
-            <div class="accordion-body">
-              <p class="tech-detail-para">
-                پارامتر Tourism (میزان توریسم) که معرفی می‌کنیم برای یک شهر در یک بازه نرمال (بازه‌ای که انتظار داریم تمام سفرها (تفرّج‌ها) کاملاً در آن انجام شود و دو روز قبل و بعد از شروع بازه، روز کاری است) برابر است با:
-              </p>
-              
-              <div class="formula-box">
-                <span class="math">Tourism</span> <span class="math-eq">=</span> 
-                (<span class="math">hours_out</span> <span class="math-op">÷</span> <span class="math">count_out</span>) 
-                <span class="math-op">−</span> 
-                (<span class="math">hours_in</span> <span class="math-op">÷</span> <span class="math">count_in</span>)
-              </div>
-              
-              <p class="tech-detail-para">
-                انتظار داریم پارامتر Tourism میانگین مدت حضور مسافران در این شهر منهای میانگین مدتی که شهروندان شهر سفر کرده‌اند را نشان دهد.
-              </p>
-              
-              <p class="tech-detail-para">
-                اگر k ماشین در ساعات I<span class="math-sub">1</span>, I<span class="math-sub">2</span>, ..., I<span class="math-sub">k</span> وارد شهر شوند و l ماشین در ساعات O<span class="math-sub">1</span>, O<span class="math-sub">2</span>, ..., O<span class="math-sub">l</span> از شهر خارج شوند، متغیرها اینگونه محاسبه می‌شوند (شروع بازه را ساعت ۰ می‌گیریم):
-              </p>
-              
-              <ul>
-                <li><span class="math">count_in</span> <span class="math-eq">=</span> <span class="math">k</span></li>
-                <li><span class="math">hours_in</span> <span class="math-eq">=</span> <span class="math">I<span class="math-sub">1</span></span> <span class="math-op">+</span> <span class="math">I<span class="math-sub">2</span></span> <span class="math-op">+</span> ... <span class="math-op">+</span> <span class="math">I<span class="math-sub">k</span></span></li>
-                <li><span class="math">count_out</span> <span class="math-eq">=</span> <span class="math">l</span></li>
-                <li><span class="math">hours_out</span> <span class="math-eq">=</span> <span class="math">O<span class="math-sub">1</span></span> <span class="math-op">+</span> <span class="math">O<span class="math-sub">2</span></span> <span class="math-op">+</span> ... <span class="math-op">+</span> <span class="math">O<span class="math-sub">l</span></span></li>
-              </ul>
-              
-              <p class="tech-detail-para">
-                برای مثال فرض کنید که ۳ نفر در ساعات ۲ تا ۱۰ و ۳ تا ۷ و نیز ۲ تا ۸ به شهری سفر کرده باشند و هیچکس از آن شهر به مسافرت نرود، خواهیم داشت:
-              </p>
-              
-              <div class="row">
-                <div class="col-md-6">
-                  <ul>
-                    <li><span class="math">count_in</span> <span class="math-eq">=</span> <span class="math">3</span></li>
-                    <li><span class="math">hours_in</span> <span class="math-eq">=</span> <span class="math">2</span> <span class="math-op">+</span> <span class="math">3</span> <span class="math-op">+</span> <span class="math">2</span> <span class="math-eq">=</span> <span class="math">7</span></li>
-                  </ul>
+            <div class="model-results">
+              <div class="model-card">
+                <div class="model-header">
+                  <h4 class="model-title">مدل پیش‌بینی دوچرخه</h4>
+                  <div class="model-accuracy">R² = 0.968</div>
                 </div>
-                <div class="col-md-6">
-                  <ul>
-                    <li><span class="math">count_out</span> <span class="math-eq">=</span> <span class="math">3</span></li>
-                    <li><span class="math">hours_out</span> <span class="math-eq">=</span> <span class="math">10</span> <span class="math-op">+</span> <span class="math">7</span> <span class="math-op">+</span> <span class="math">8</span> <span class="math-eq">=</span> <span class="math">25</span></li>
-                  </ul>
+                <div class="model-description">
+                  <p>
+                    با استفاده از دو پارامتر نزدیک هم دهک و مجذور دهک برای افراد شهری و گرنه صفر در هر دو مورد 
+                    با خطای ناچیز می‌توانیم پیش‌بینی کنیم که چند خانوار از هر دهک و با وضعیت خاص شهری/روستایی 
+                    دارای دوچرخه هستند.
+                  </p>
+                </div>
+                <div class="model-insight">
+                  <div class="insight-highlight">
+                    <i class="fas fa-lightbulb text-warning"></i>
+                    <strong>نتیجه کلیدی:</strong> داشتن و نداشتن دوچرخه اگرچه در روستا ارتباط قابل توجهی با وضع مالی ندارد، 
+                    ولیکن برای خانواده‌های شهری حیاتی است!
+                  </div>
                 </div>
               </div>
-              
-              <div class="formula-box">
-                <span class="math">Tourism</span> <span class="math-eq">=</span> 
-                <span class="math">25</span> <span class="math-op">÷</span> <span class="math">3</span> 
-                <span class="math-op">−</span> 
-                <span class="math">7</span> <span class="math-op">÷</span> <span class="math">3</span> 
-                <span class="math-eq">=</span> <span class="math">6</span>
+            </div>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">مدل رگرسیون دوچرخه</h4>
               </div>
-              
-              <p class="tech-detail-para">
-                بنابراین افراد میانگین ۶ ساعت در شهر بوده‌اند که می‌دانیم درست است. (توجه کنید فرمول صرفاً بر اساس ورود و خروج است و مستقل از اینکه واقعاً سفرها به چه صورت باشند کار می‌کند.)
-              </p>
+              <div class="viz-body">
+                <iframe src="results/4.html" class="chart-iframe" title="مدل رگرسیون دوچرخه"></iframe>
+              </div>
+              <div class="model-stats">
+                <div class="row text-center">
+                  <div class="col-md-4">
+                    <div class="stat-item">
+                      <div class="stat-value">20</div>
+                      <div class="stat-label">تعداد رکورد</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="stat-item">
+                      <div class="stat-value">3</div>
+                      <div class="stat-label">متغیرهای پیش‌بین</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="stat-item">
+                      <div class="stat-value">96.8%</div>
+                      <div class="stat-label">دقت مدل</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">مقاصد گردشگری فصلی</h2>
-      <div class="viz-container">
-        <div class="viz-body ratio ratio-16x9">
-          <iframe src="results/Season.html" frameborder="0"></iframe>
-        </div>
-      </div>
-      <p>
-        علاوه بر شهرهایی که مشاهده شدند مقاصد گردشگری در کل سال هستند، شهرهایی نیز وجود دارند که تنها به‌صورت فصلی مورد توجه گردشگران قرار می‌گیرند. این مقاصد معمولاً کمتر شناخته‌ شده‌اند و امیدواریم سفر در فصل مناسب به آن‌ها، تجربه‌ای شیرین و متفاوت برایتان رقم بزند.
-      </p>
-    </section>
-    
-    <section class="section-card">
-      <h2 class="mb-3">منابع</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a href="https://141.ir/" target="_blank" class="d-flex align-items-center"><span class="me-2">سامانه اطلاعات راه‌های کشور (۱۴۱)</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
-        <li class="list-group-item"><a href="https://d-mag.ir/" target="_blank" class="d-flex align-items-center"><span class="me-2">مجله تحلیلی دقیقه</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
-        <li class="list-group-item"><a href="https://www.wikipedia.org/" target="_blank" class="d-flex align-items-center"><span class="me-2">دانشنامه ویکی‌پدیا</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
-        <li class="list-group-item"><a href="https://exceliran.com/" target="_blank" class="d-flex align-items-center"><span class="me-2">اکسل ایران</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
-      </ul>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="py-4 mt-5">
+  <!-- Motorcycle Analysis -->
+  <section id="motorcycle-analysis" class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 mx-auto text-center">
-          <p class="mb-3">© 2025 مجله تحلیلی ثانیه - تمامی حقوق محفوظ است.</p>
-          <a href="https://github.com/kaasraarabi/Regression-Analysis" target="_blank" class="github-icon" title="منبع کد پروژه">
-            <i class="bi bi-github"></i>
-          </a>
+        <div class="col-lg-10 mx-auto">
+          <div class="section-header text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">تحلیل موتور</h2>
+            <p class="lead text-muted">سهم ثابت در سبد وسایل نقلیه خانوار</p>
+          </div>
+          
+          <div class="analysis-content">
+            <div class="intro-text">
+              <p class="analysis-paragraph">
+                با توجه به نمودار موتور در سالیان اخیر که یک نمودار ثابت بود، این پرسش را در ذهن ایجاد می‌کند 
+                که به راستی کدام متغیرها تعیین کننده داشتن یا نداشتن موتور است.
+              </p>
+            </div>
+            
+            <div class="model-results">
+              <div class="model-card">
+                <div class="model-header">
+                  <h4 class="model-title">مدل جامع موتور</h4>
+                  <div class="model-accuracy">R² = 0.903</div>
+                </div>
+                <div class="model-description">
+                  <p>
+                    مدلی که قادر است با دقت خوبی پیش‌بینی کند که چند خانوار در دهک و سال و وضعیت شهری 
+                    روستایی بودن مشخص صاحب موتور است. از آنجا که در تابع پیش‌بینی کننده سال ظاهر نمی‌شود 
+                    تایید کننده این است که موتور سهم ثابتی از وسایل نقلیه خانوار را دارد.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="model-coefficients">
+              <h4 class="mb-4 text-center">ضرایب مدل رگرسیون</h4>
+              <div class="coefficients-table">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="coefficient-item">
+                      <span class="coef-name">عرض از مبدأ</span>
+                      <span class="coef-value">356,454</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="coefficient-item">
+                      <span class="coef-name">دهک (D)</span>
+                      <span class="coef-value">-34,620.8</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="coefficient-item">
+                      <span class="coef-name">شهری بودن (C)</span>
+                      <span class="coef-value">-281,914</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="coefficient-item">
+                      <span class="coef-name">D × C</span>
+                      <span class="coef-value">131,363</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="coefficient-item">
+                      <span class="coef-name">D² × C</span>
+                      <span class="coef-value">-8,676.81</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">نقشه توزیع جغرافیایی مالکیت موتور</h4>
+              </div>
+              <div class="viz-body">
+                <img src="results/5.png" class="img-fluid rounded shadow-sm" alt="نقشه توزیع موتور">
+              </div>
+              <div class="viz-description">
+                <p>
+                  سیستان و بلوچستان به دلیل مسافت‌های زیاد و همچنین وضع رفاهی نامناسب موتور ندارند. 
+                  در کل فاکتور اینکه کدام استان مهم است خیلی پررنگ است.
+                </p>
+              </div>
+            </div>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">رابطه دهک درآمدی و مالکیت موتور</h4>
+              </div>
+              <div class="viz-body">
+                <img src="results/6.jpeg" class="img-fluid rounded shadow-sm" alt="رابطه دهک و موتور">
+              </div>
+              <div class="viz-description">
+                <p>
+                  می‌توان وضعیت داشتن موتور را کمی کلی‌تر بررسی کرد. طبق مشاهدات خانوارها با دهک پایین‌تر 
+                  از موتور بیشتر استفاده می‌کنند. توجه کنید که داده دهک ۱ و دهک ۱۰ به عنوان داده‌های حدی 
+                  کنار گذاشته شده‌اند، می‌توان چنین برداشت کرد که دهک نخست حتی قادر به خرید موتور هم 
+                  در برخی از خانوارها نیست!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Car Analysis -->
+  <section id="car-analysis" class="section-padding bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="section-header text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">تحلیل خودرو</h2>
+            <p class="lead text-muted">اصلی‌ترین وسیله نقلیه شخصی</p>
+          </div>
+          
+          <div class="analysis-content">
+            <div class="intro-text">
+              <p class="analysis-paragraph">
+                می‌دانیم ماشین اصلی‌ترین وسیله نقلیه شخصی است. حال از جنبه‌های مختلف می‌خواهیم آن را بررسی کنیم. 
+                ابتدا به بررسی زمانی آن می‌پردازیم. با داشتن مدلی که تعداد خانوارهای صاحب ماشین در هر سال را 
+                پیش‌بینی کند می‌توانیم سال‌های پیشرو را نیز پیش‌بینی کنیم!
+              </p>
+            </div>
+            
+            <div class="model-results">
+              <div class="model-card">
+                <div class="model-header">
+                  <h4 class="model-title">مدل پیش‌بینی زمانی خودرو</h4>
+                  <div class="model-accuracy">R² = 0.998</div>
+                </div>
+                <div class="model-description">
+                  <p>
+                    برای پیش‌بینی این تعداد از دو متغیر سال و ۱.۱ به توان سال بهره گرفته‌ایم. 
+                    بخش نمایی به سبب رشد جمعیت و افزایش فناوری تولید گنجانده شده است و بخش خطی نیز 
+                    اقبال بیشتر مردم و توانایی بیشتر خرید آنها را بازتاب می‌دهد.
+                  </p>
+                </div>
+                <div class="model-validation">
+                  <div class="validation-highlight">
+                    <i class="fas fa-check-circle text-success"></i>
+                    <strong>اعتبارسنجی:</strong> برای اطمینان از قدرت برون‌یابی مدل، ۳ سال اخیر را حذف کردیم 
+                    و گذاشتیم تا مدل آنها را پیش‌بینی کند. دقت تست همچنان بالا بود (R² > 92%) و این یعنی 
+                    با خیال آسوده می‌توانیم سال‌های پیشرو را پیش‌بینی کنیم!
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">روند زمانی مالکیت خودرو و پیش‌بینی آینده</h4>
+              </div>
+              <div class="viz-body">
+                <iframe src="results/7.html" class="chart-iframe" title="روند زمانی خودرو"></iframe>
+              </div>
+            </div>
+            
+            <div class="model-results">
+              <div class="model-card">
+                <div class="model-header">
+                  <h4 class="model-title">مدل جامع خودرو (دهک و سال)</h4>
+                  <div class="model-accuracy">R² = 0.965</div>
+                </div>
+                <div class="model-description">
+                  <p>
+                    برای پیش‌بینی تخصصی‌تر مدلی می‌سازیم که تعداد خانوارهای یک دهک خاص در یک سال به خصوص 
+                    را پیش‌بینی کند. اگر تنها از دو متغیر دهک و سال استفاده کنیم و آن هم به صورت خطی 
+                    یک مدل کارآمد خواهیم داشت که دقت بالایی دارد.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="visualization-container">
+              <div class="viz-header">
+                <h4 class="viz-title">مدل پیش‌بینی بر اساس دهک و سال</h4>
+              </div>
+              <div class="viz-body">
+                <iframe src="results/8.html" class="chart-iframe" title="مدل دهک و سال"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section id="methodology" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="section-header text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">روش‌شناسی</h2>
+            <p class="lead text-muted">رویکرد علمی و ابزارهای تحلیلی</p>
+          </div>
+          
+          <div class="methodology-content">
+            <div class="method-section">
+              <h3 class="method-section-title">
+                <i class="fas fa-database text-primary me-3"></i>
+                منبع داده
+              </h3>
+              <div class="method-card">
+                <p>
+                  این تحلیل بر اساس داده‌های بودجه خانوار ایران انجام شده است. 
+                  این داده‌ها شامل اطلاعات جامعی از وسایل نقلیه خانوارهای ایرانی در دهک‌های مختلف درآمدی 
+                  و مناطق شهری و روستایی است.
+                </p>
+                <div class="data-source-link">
+                  <a href="https://iran-open-data.github.io/HBSIR/" target="_blank" class="btn btn-outline-primary">
+                    <i class="fas fa-external-link-alt me-2"></i>
+                    مراجعه به منبع داده
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="method-section">
+              <h3 class="method-section-title">
+                <i class="fas fa-cogs text-primary me-3"></i>
+                مدل‌سازی آماری
+              </h3>
+              <div class="method-card">
+                <h4>رگرسیون خطی چندمتغیره (OLS)</h4>
+                <p>
+                  برای مدل‌سازی رفتار مالکیت هر وسیله نقلیه از روش رگرسیون خطی چندمتغیره استفاده شده است. 
+                  متغیرهای مستقل شامل دهک درآمدی، وضعیت شهری/روستایی، سال، و ترکیباتی از این متغیرها 
+                  (مانند دهک به توان دو و تعاملات) هستند.
+                </p>
+                <div class="formula-example">
+                  <div class="formula-title">مثال فرمول مدل موتور:</div>
+                  <div class="formula-content">
+                    Y = 356,454 - 34,620.8×D - 281,914×C + 131,363×(D×C) - 8,676.81×(D²×C)
+                  </div>
+                  <div class="formula-vars">
+                    <small>Y: تعداد خانوارهای دارای موتور، D: دهک درآمدی، C: متغیر شهری/روستایی</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="method-section">
+              <h3 class="method-section-title">
+                <i class="fas fa-chart-line text-primary me-3"></i>
+                ارزیابی دقت مدل
+              </h3>
+              <div class="method-card">
+                <div class="metrics-grid">
+                  <div class="metric-explanation">
+                    <h5>ضریب تعیین (R²)</h5>
+                    <p>
+                      این شاخص نشان می‌دهد که چه درصدی از تغییرات متغیر وابسته توسط مدل توضیح داده می‌شود. 
+                      مقادیر نزدیک به ۱ نشان‌دهنده دقت بالای مدل است.
+                    </p>
+                  </div>
+                  
+                  <div class="metric-explanation">
+                    <h5>اعتبارسنجی متقابل</h5>
+                    <p>
+                      برای خودرو، ۳ سال آخر داده‌ها را از آموزش مدل حذف کرده و سپس دقت پیش‌بینی این سال‌ها 
+                      را بررسی کردیم تا قدرت تعمیم‌پذیری مدل را اندازه‌گیری کنیم.
+                    </p>
+                  </div>
+                  
+                  <div class="metric-explanation">
+                    <h5>تحلیل باقی‌مانده‌ها</h5>
+                    <p>
+                      برای اطمینان از صحت فرضیات رگرسیون، توزیع باقی‌مانده‌ها و عدم وجود الگوی منظم 
+                      در آنها بررسی شده است.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="method-section">
+              <h3 class="method-section-title">
+                <i class="fas fa-microscope text-primary me-3"></i>
+                نوآوری‌های روش‌شناختی
+              </h3>
+              <div class="method-card">
+                <ul class="innovation-list">
+                  <li>
+                    <strong>مدل‌سازی متفاوت برای هر وسیله:</strong> 
+                    به جای استفاده از یک مدل واحد، برای هر وسیله نقلیه مدل خاصی طراحی شده که 
+                    ویژگی‌های منحصر به فرد آن وسیله را در نظر می‌گیرد.
+                  </li>
+                  <li>
+                    <strong>در نظر گیری تعاملات پیچیده:</strong> 
+                    تعامل بین دهک درآمدی و محل سکونت (شهر/روستا) به صورت جداگانه مدل‌سازی شده است.
+                  </li>
+                  <li>
+                    <strong>تحلیل تطبیقی:</strong> 
+                    مقایسه الگوهای مالکیت بین مناطق شهری و روستایی و دهک‌های مختلف درآمدی.
+                  </li>
+                  <li>
+                    <strong>پیش‌بینی آینده:</strong> 
+                    امکان پیش‌بینی روندهای آتی مالکیت وسایل نقلیه بر اساس الگوهای تاریخی.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="research-team">
+              <h3 class="team-title text-center mb-4">تیم تحقیق</h3>
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <div class="team-member">
+                    <h5>کسری عربی</h5>
+                    <p class="text-muted">تحلیلگر داده</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="team-member">
+                    <h5>محمدپارسا الهی منش</h5>
+                    <p class="text-muted">متخصص مدل‌سازی</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="team-member">
+                    <h5>محمدباقر برکند</h5>
+                    <p class="text-muted">تحلیلگر آماری</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="code-access text-center mt-5">
+              <a href="results/main.ipynb" class="btn btn-dark btn-lg">
+                <i class="fab fa-python me-2"></i>
+                مشاهده کد تحلیل
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <h5 class="mb-3">تحلیل وسایل نقلیه خانوار</h5>
+          <p class="text-light opacity-75">
+            مطالعه‌ای جامع بر روی الگوهای مالکیت وسایل نقلیه خانوار در ایران با استفاده از روش‌های پیشرفته 
+            تحلیل داده و مدل‌سازی آماری. این پژوهش بخشی از مجموعه تحلیل‌های اقتصادی-اجتماعی ایران است.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <h6 class="mb-3">منابع و پیوندها</h6>
+          <div class="footer-links">
+            <a href="https://iran-open-data.github.io/HBSIR/" class="text-light d-block mb-2">
+              <i class="fas fa-database me-2"></i>داده‌های بودجه خانوار
+            </a>
+            <a href="results/main.ipynb" class="text-light d-block">
+              <i class="fas fa-code me-2"></i>کد تحلیل
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 opacity-25">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <small class="text-light opacity-50">
+            © ۲۰۲۵ تیم تحلیل داده. تمامی حقوق محفوظ است.
+          </small>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <small class="text-light opacity-50">
+            ساخته شده با علم و دقت برای آینده بهتر
+          </small>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Smooth Scrolling and Enhanced Interactions -->
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Navbar background change on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Lazy loading for iframes
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target;
+          if (iframe.dataset.src) {
+            iframe.src = iframe.dataset.src;
+            iframe.removeAttribute('data-src');
+            observer.unobserve(iframe);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all iframes for lazy loading
+    document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+      observer.observe(iframe);
+    });
+
+    // Add smooth reveal animations on scroll
+    const revealElements = document.querySelectorAll('.insight-card, .model-card, .visualization-container');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    // Initialize reveal animations
+    revealElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      revealObserver.observe(el);
+    });
+
+    // Enhanced loading experience
+    window.addEventListener('load', function() {
+      document.body.classList.add('loaded');
+      
+      // Initialize all charts after page load
+      document.querySelectorAll('.chart-iframe').forEach(iframe => {
+        iframe.style.minHeight = '500px';
+      });
+    });
+
+    // Add accessibility improvements
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-navigation');
+      }
+    });
+
+    document.addEventListener('mousedown', function() {
+      document.body.classList.remove('keyboard-navigation');
+    });
+
+    // Performance monitoring
+    if ('performance' in window && 'mark' in performance) {
+      performance.mark('website-interactive');
+    }
+  </script>
+  
+  <!-- Additional styles for enhanced UX -->
+  <style>
+    body.loaded {
+      opacity: 1;
+    }
+    
+    body.keyboard-navigation *:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    
+    .chart-iframe {
+      background: linear-gradient(45deg, #f8fafc, #e2e8f0);
+      background-size: 20px 20px;
+      animation: loading-gradient 1.5s infinite;
+    }
+    
+    @keyframes loading-gradient {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+    
+    .chart-iframe[src] {
+      background: none;
+      animation: none;
+    }
+  </style>
 </body>
 </html>
