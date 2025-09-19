@@ -26,6 +26,10 @@
       backdrop-filter: blur(20px);
       background-color: rgba(255, 255, 255, 0.95) !important;
     }
+    /* Method section title spacing */
+    .method-section-title i {
+      margin-left: 0.75rem;
+    }
   </style>
   <style>
     * {
@@ -36,12 +40,12 @@
       color: #333;
       line-height: 1.8;
     }
-    /* .sticky-header {
+    .sticky-header {
       position: sticky;
       top: 0;
       z-index: 1000;
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-    } */
+    }
     .team-names {
       text-align: left;
       font-size: 1.0rem;
@@ -359,21 +363,31 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm" style="backdrop-filter: blur(10px);">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="#hero">
-        <img src="logo.jpeg" alt="Logo" height="40" class="me-3">
-        <div>
-          <h5 class="mb-0 fw-bold text-primary">تحلیل وسایل نقلیه خانوار</h5>
-          <small class="text-muted">مطالعه جامع مالکیت خودرو در ایران</small>
+  <!-- Header -->
+  <header class="bg-primary text-white py-4 mb-5 sticky-header">
+    <div class="container d-flex align-items-center justify-content-between" dir="rtl">
+      <div class="d-flex align-items-center">
+        <div class="logo-placeholder me-4">
+          <img src="logo.jpeg" alt="logo" class="img-fluid" style="max-height:100px;">
         </div>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <div class="me-3">
+          <h1 class="h2 mb-0">مجله تحلیلی ثانیه</h1>
+          <p class="lead mb-0">دقیق‌تر از دقیقه</p>
+        </div>
+      </div>
+      <div class="team-names" dir="ltr">
+        <div>کسری عربی</div>
+        <div>محمدپارسا الهی منش</div>
+        <div>محمدباقر برکند</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a class="nav-link" href="#executive-summary">خلاصه اجرایی</a></li>
           <li class="nav-item"><a class="nav-link" href="#overview">نمای کلی</a></li>
           <li class="nav-item"><a class="nav-link" href="#bicycle-analysis">تحلیل دوچرخه</a></li>
@@ -386,9 +400,9 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero-section">
+  <section id="hero" class="hero-section" style="padding-top: 2rem;">
     <div class="container">
-      <div class="row align-items-center min-vh-100">
+      <div class="row align-items-center" style="min-height: 70vh;">
         <div class="col-lg-8 mx-auto text-center">
           <h1 class="display-3 fw-bold mb-4 gradient-text">تحلیل وسایل نقلیه خانوار</h1>
           <h2 class="h3 text-muted mb-4">مدل‌سازی پیشرفته مالکیت خودرو در ایران</h2>
@@ -402,7 +416,7 @@
                 <div class="metadata-card">
                   <i class="fas fa-database text-primary mb-2"></i>
                   <h6 class="fw-bold">منبع داده</h6>
-                  <small>بودجه خانوار ایران</small>
+                  <small>طرح نمونه‌گیری هزینه و درآمد خانوار</small>
                 </div>
               </div>
               <div class="col-md-3">
@@ -416,7 +430,7 @@
                 <div class="metadata-card">
                   <i class="fas fa-calendar text-primary mb-2"></i>
                   <h6 class="fw-bold">بازه زمانی</h6>
-                  <small>۱۳۹۰-۱۴۰۰</small>
+                  <small>۱۳۸۰-۱۴۰۲</small>
                 </div>
               </div>
               <div class="col-md-3">
@@ -502,30 +516,6 @@
               </div>
             </div>
           </div>
-          
-          <div class="key-findings mt-5">
-            <h3 class="h4 fw-bold mb-4 text-center">نتایج کلیدی مدل‌سازی</h3>
-            <div class="row">
-              <div class="col-md-4 text-center">
-                <div class="metric-card">
-                  <div class="metric-value text-primary">R² = 0.968</div>
-                  <div class="metric-label">دقت مدل دوچرخه</div>
-                </div>
-              </div>
-              <div class="col-md-4 text-center">
-                <div class="metric-card">
-                  <div class="metric-value text-success">R² = 0.903</div>
-                  <div class="metric-label">دقت مدل موتور</div>
-                </div>
-              </div>
-              <div class="col-md-4 text-center">
-                <div class="metric-card">
-                  <div class="metric-value text-info">R² = 0.998</div>
-                  <div class="metric-label">دقت مدل خودرو</div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -544,7 +534,7 @@
           <div class="analysis-content">
             <p class="analysis-paragraph">
               قبل از بررسی متخصصانه هر وسیله، نگاهی به کلیات داده‌ها می‌اندازیم. 
-              این تحلیل بر اساس داده‌های بودجه خانوار ایران و با تمرکز بر وسیله نقلیه ممتاز خانوار انجام شده است.
+              این تحلیل بر اساس داده‌های طرح نمونه‌گیری هزینه و درآمد خانوار مرکز آمار ایران و با تمرکز بر وسیله نقلیه ممتاز خانوار انجام شده است.
             </p>
             
             <div class="visualization-container">
@@ -627,7 +617,7 @@
                 </div>
                 <div class="model-description">
                   <p>
-                    با استفاده از دو پارامتر نزدیک هم دهک و مجذور دهک برای افراد شهری و گرنه صفر در هر دو مورد 
+                    با استفاده از دو پارامتر نزدیک هم دهک و مجذور دهک برای افراد شهری (و صفر برای روستاییان) در هر دو مورد 
                     با خطای ناچیز می‌توانیم پیش‌بینی کنیم که چند خانوار از هر دهک و با وضعیت خاص شهری/روستایی 
                     دارای دوچرخه هستند.
                   </p>
@@ -659,8 +649,8 @@
                   </div>
                   <div class="col-md-4">
                     <div class="stat-item">
-                      <div class="stat-value">3</div>
-                      <div class="stat-label">متغیرهای پیش‌بین</div>
+                      <div class="stat-value">2</div>
+                      <div class="stat-label">متغیرهای مستقل</div>
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -700,7 +690,7 @@
               <div class="model-card">
                 <div class="model-header">
                   <h4 class="model-title">مدل جامع موتور</h4>
-                  <div class="model-accuracy">R² = 0.903</div>
+                  <div class="model-accuracy">R² = 0.92</div>
                 </div>
                 <div class="model-description">
                   <p>
@@ -887,9 +877,10 @@
               </h3>
               <div class="method-card">
                 <p>
-                  این تحلیل بر اساس داده‌های بودجه خانوار ایران انجام شده است. 
+                  این تحلیل بر اساس داده‌های طرح نمونه‌گیری هزینه و درآمد خانوار مرکز آمار ایران انجام شده است. 
                   این داده‌ها شامل اطلاعات جامعی از وسایل نقلیه خانوارهای ایرانی در دهک‌های مختلف درآمدی 
-                  و مناطق شهری و روستایی است.
+                  و مناطق شهری و روستایی است. داده‌ها بر اساس مصاحبه مستقیم و بازدید از خانوارها جمع‌آوری شده 
+                  و شامل اطلاعات دقیق مالکیت وسایل نقلیه است.
                 </p>
                 <div class="data-source-link">
                   <a href="https://iran-open-data.github.io/HBSIR/" target="_blank" class="btn btn-outline-primary">
@@ -918,7 +909,7 @@
                     Y = 356,454 - 34,620.8×D - 281,914×C + 131,363×(D×C) - 8,676.81×(D²×C)
                   </div>
                   <div class="formula-vars">
-                    <small>Y: تعداد خانوارهای دارای موتور، D: دهک درآمدی، C: متغیر شهری/روستایی</small>
+                    <small>Y: تعداد خانوارهای دارای موتور در سال y، دهک D و وضعیت شهری/روستایی C، D: دهک درآمدی، C: متغیر شهری/روستایی</small>
                   </div>
                 </div>
               </div>
@@ -971,8 +962,9 @@
                     ویژگی‌های منحصر به فرد آن وسیله را در نظر می‌گیرد.
                   </li>
                   <li>
-                    <strong>در نظر گیری تعاملات پیچیده:</strong> 
-                    تعامل بین دهک درآمدی و محل سکونت (شهر/روستا) به صورت جداگانه مدل‌سازی شده است.
+                    <strong>کاربرد انواع مدل‌های آماری:</strong> 
+                    استفاده از مدل‌های طبقه‌بندی، پیش‌بینی و سری زمانی بر روی انواع مختلف دیدگاه‌ها به داده 
+                    برای ارائه تحلیل جامع و چندبعدی.
                   </li>
                   <li>
                     <strong>تحلیل تطبیقی:</strong> 
@@ -1031,10 +1023,16 @@
           </p>
         </div>
         <div class="col-lg-4 text-lg-end">
-          <h6 class="mb-3">منابع و پیوندها</h6>
+          <h6 class="mb-3">گزارش‌های تحلیلی</h6>
           <div class="footer-links">
+            <a href="#" class="text-light d-block mb-2">
+              <i class="fas fa-chart-line me-2"></i>تحلیل وسایل نقلیه خانوار
+            </a>
+            <a href="#" class="text-light d-block mb-2">
+              <i class="fas fa-map-marked-alt me-2"></i>تحلیل گردشگری ایران
+            </a>
             <a href="https://iran-open-data.github.io/HBSIR/" class="text-light d-block mb-2">
-              <i class="fas fa-database me-2"></i>داده‌های بودجه خانوار
+              <i class="fas fa-database me-2"></i>داده‌های هزینه و درآمد خانوار
             </a>
             <a href="results/main.ipynb" class="text-light d-block">
               <i class="fas fa-code me-2"></i>کد تحلیل
@@ -1046,12 +1044,12 @@
       <div class="row align-items-center">
         <div class="col-md-6">
           <small class="text-light opacity-50">
-            © ۲۰۲۵ تیم تحلیل داده. تمامی حقوق محفوظ است.
+            © ۲۰۲۵ مجله دقیقه. تمامی حقوق محفوظ است.
           </small>
         </div>
         <div class="col-md-6 text-md-end">
           <small class="text-light opacity-50">
-            ساخته شده با علم و دقت برای آینده بهتر
+            دقیق تر از دقیقه - تحلیل‌های علمی و کاربردی
           </small>
         </div>
       </div>
