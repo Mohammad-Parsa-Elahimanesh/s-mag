@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مجله تحلیلی ثانیه — صفحهٔ اصلی</title>
+  <meta name="description" content="صفحهٔ اصلی پروژه‌های مجله تحلیلی ثانیه: گردشگری و وسایل نقلیه.">
+  <!-- از لوگوی موجود یکی از پروژه‌ها استفاده می‌کنیم -->
+  <link rel="icon" href="vehicle/logo.jpeg">
+  <style>
+    :root{
+      --bg:#fff; --text:#111; --muted:#666; --card:#f7f7f7; --border:#e7e7e7;
+      --radius:16px; --shadow:0 6px 20px rgba(0,0,0,.06); --max:980px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0f1115; --text:#e8eaed; --muted:#aeb1b7; --card:#151922; --border:#22283a; --shadow:0 10px 28px rgba(0,0,0,.45); }
+    }
+    *{box-sizing:border-box}
+    body{ margin:0; background:var(--bg); color:var(--text); line-height:1.7;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Vazirmatn", "IRANSans", Arial, sans-serif; }
+    .container{max-width:var(--max); margin:0 auto; padding:24px 20px;}
+    header{ text-align:center; padding:24px 0 12px; }
+    .brand{ display:inline-flex; align-items:center; gap:12px; }
+    .brand img{ width:52px; height:52px; border-radius:12px; object-fit:cover; box-shadow:var(--shadow); }
+    h1{ margin:10px 0 0; font-size:28px; }
+    .tagline{ margin:2px 0 10px; color:var(--muted); }
+    .authors{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav.top{ margin-top:18px; }
+    nav.top a{ display:inline-block; margin:4px 6px; padding:8px 14px; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--text); }
+    main{ padding:22px 0 40px; }
+    .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px; }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px; }
+    .card h2{ margin:4px 0; font-size:20px; }
+    .card p{ margin:0; color:var(--muted); }
+    .actions{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{ display:inline-block; padding:10px 14px; text-decoration:none; border-radius:10px; border:1px solid var(--border); color:var(--text); }
+    .btn.primary{ background:var(--text); color:var(--bg); border-color:var(--text); }
+    footer{ margin-top:30px; padding-top:18px; border-top:1px dashed var(--border); color:var(--muted); text-align:center; font-size:14px; }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="brand">
+      <img src="vehicle/logo.jpeg" alt="لوگوی مجله تحلیلی ثانیه">
+      <div>
+        <h1>مجله تحلیلی ثانیه</h1>
+        <div class="tagline">دقیق‌تر از دقیقه</div>
+      </div>
+    </div>
+    <div class="authors">
+      <span>کسری عربی</span> ·
+      <span>محمدپارسا الهی‌منش</span> ·
+      <span>محمدباقر برکند</span>
+    </div>
+
+    <!-- ناوبری کوچک شبیه ساختار پروژهٔ vehicle -->
+    <nav class="top" aria-label="پروژه‌ها">
+      <a href="#tourism">گردشگری</a>
+      <a href="#vehicle">وسایل نقلیه</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="tourism" class="card">
+      <span class="tag">پروژه</span>
+      <h2>در جست‌وجوی تفرج‌گاه‌ها (گردشگری)</h2>
+      <p>
+        تحلیلی گام‌به‌گام بر ترددهای بین‌شهری برای شناسایی تفرج‌گاه‌ها: از نمودارهای ورودی/خروجی و روندهای شش‌ماهه تا
+        خوشه‌بندی مراکز استان و معرفی پارامتر <em>Tourism</em> برای برآورد «ارزش توریستی» شهرها.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="tourism/">مشاهدهٔ پروژه</a>
+        <a class="btn" href="https://kaasraarabi.github.io/s-mag/tourism/">نسخهٔ آنلاین</a>
+      </div>
+    </section>
+
+    <section id="vehicle" class="card">
+      <span class="tag">پروژه</span>
+      <h2>تحلیل وسایل نقلیهٔ خانوار</h2>
+      <p>
+        مطالعه‌ای جامع دربارهٔ الگوهای مالکیت در ایران (۱۳۸۰ تا ۱۴۰۲): خلاصهٔ اجرایی، نمای کلی داده‌ها و مدل‌های
+        رگرسیون دقیق برای دوچرخه، موتور و خودرو (R² ≈ 0.92–0.998) به تفکیک دهک، سال و وضعیت شهری/روستایی.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="vehicle/">مشاهدهٔ پروژه</a>
+        <a class="btn" href="https://kaasraarabi.github.io/s-mag/vehicle/">نسخهٔ آنلاین</a>
+      </div>
+    </section>
+
+    <footer>
+      <small>© <span id="y"></span> مجله تحلیلی ثانیه — <a href="https://github.com/kaasraarabi/s-mag">مشاهده در گیت‌هاب</a></small>
+    </footer>
+  </main>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
