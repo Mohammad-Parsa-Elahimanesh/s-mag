@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مجله تحلیلی ثانیه</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="icon" href="logo.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="fonts/Yekan.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      font-family: 'Yekan', Tahoma, sans-serif;
+    }
+    body {
+      background-color: #fafafa;
+      color: #333;
+      line-height: 1.8;
+    }
+    /* .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    } */
+    .team-names {
+      text-align: left;
+      font-size: 1.0rem;
+      line-height: 1.5;
+    }
+    .subtitle {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c3e50;
+      text-align: center;
+      margin: 0 auto 2rem;
+      padding-bottom: 0.5rem;
+      position: relative;
+      display: block;
+      width: fit-content;
+    }
+    
+    .subtitle:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      right: 25%;
+      height: 3px;
+      background-image: linear-gradient(to right, transparent, #3498db, transparent);
+    }
+    /* Minimalist design elements */
+    .section-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+    .section-card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+    }
+    /* Enhanced heading styles */
+    h2 {
+      font-size: 1.75rem !important;
+      font-weight: 700 !important;
+      color: #2c3e50 !important;
+      padding-bottom: 0.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: #3498db;
+    }
+    h3 {
+      font-size: 1.4rem !important;
+      font-weight: 600 !important;
+      color: #34495e !important;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    h4 {
+      font-size: 1.2rem !important;
+      font-weight: 600 !important;
+      color: #34495e !important;
+      margin-top: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    strong {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    /* Clean data visualization containers */
+    .viz-container {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+    .viz-container:hover {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    }
+    .viz-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
+      color: #2c3e50;
+      background-color: #f8f9fa;
+    }
+    .viz-body {
+      padding: 0;
+    }
+    /* Method info boxes */
+    .method-box {
+      background-color: #fcfcfc;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      border-right: 3px solid #3498db;
+      transition: all 0.2s ease;
+    }
+    .method-box:hover {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .method-box h3 {
+      margin-top: 0;
+      color: #2c3e50 !important;
+      font-size: 1.3rem !important;
+    }
+    /* Method description styling */
+    .method-description {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border-radius: 10px;
+      background-color: rgba(240, 249, 255, 0.7);
+    }
+    .method-title {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      margin-bottom: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      background-color: #e3f2fd;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .method-title.explanation {
+      background-color: #e3f2fd;
+      border-right: 3px solid #2196f3;
+    }
+    .method-title.usage {
+      background-color: #e8f5e9;
+      border-right: 3px solid #4caf50;
+    }
+    .method-title.limitations {
+      background-color: #fef5e7;
+      border-right: 3px solid #f39c12;
+    }
+    /* Year labels for cluster maps */
+    .year-label {
+      background-color: #2c3e50;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    /* Button styling */
+    .fancy-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #f8f9fa;
+      color: #2c3e50;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin: 0.5rem 0.25rem;
+      border: 1px solid #e9ecef;
+    }
+    .fancy-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      background-color: white;
+      color: #3498db;
+    }
+    /* Improved iframe containers */
+    iframe {
+      background-color: #f8f9fa;
+    }
+    /* Stylish tags */
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+    
+    /* Formula styling */
+    .formula-box {
+      background-color: #f1f8ff;
+      border-right: 3px solid #3498db;
+      padding: 1.75rem;
+      margin: 1.75rem 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #2c3e50;
+      border-radius: 10px;
+      direction: ltr;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .math {
+      font-family: 'Courier New', Courier, monospace;
+      font-style: normal;
+      color: #2c3e50;
+    }
+    
+    .math-var {
+      font-style: italic;
+      color: #2980b9;
+    }
+    
+    .math-op {
+      margin: 0 0.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .math-eq {
+      margin: 0 1rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .math-sub {
+      font-size: 0.8em;
+      vertical-align: sub;
+    }
+    
+    .tech-detail-para {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      text-align: justify;
+      margin-bottom: 1.2rem;
+    }
+    
+    /* Accordion customization */
+    .accordion-button {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      background-color: #f8f9fa;
+      padding: 1.25rem 1.5rem;
+      border-radius: 10px !important;
+    }
+    
+    .accordion-button:not(.collapsed) {
+      color: #3498db;
+      background-color: #e3f2fd;
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    
+    .accordion-button:focus {
+      box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+    }
+    
+    .accordion-body {
+      padding: 1.75rem;
+      background-color: #fafeff;
+    }
+    
+    /* Additional polish elements */
+    p {
+      margin-bottom: 1.25rem;
+      line-height: 1.85;
+    }
+    
+    .list-group-item {
+      padding: 1rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+    
+    .list-group-item:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .list-group-item a {
+      color: #3498db;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .list-group-item a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    
+    footer {
+      margin-top: 3rem;
+      padding: 2rem 0;
+      background-color: #f8f9fa;
+      border-top: 1px solid #eee;
+    }
+    
+    .github-icon {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      transition: all 0.2s ease;
+    }
+    
+    .github-icon:hover {
+      color: #3498db;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-primary text-white py-4 mb-5 sticky-header">
+    <div class="container d-flex align-items-center justify-content-between" dir="rtl">
+      <div class="d-flex align-items-center">
+        <div class="logo-placeholder me-4">
+          <img src="logo.jpeg" alt="logo" class="img-fluid" style="max-height:100px;">
+        </div>
+        <div class="me-3">
+          <h1 class="h2 mb-0">مجله تحلیلی ثانیه</h1>
+          <p class="lead mb-0">دقیق‌تر از دقیقه</p>
+        </div>
+      </div>
+      <div class="team-names" dir="ltr">
+        <div>کسری عربی</div>
+        <div>محمدپارسا الهی منش</div>
+        <div>محمدباقر برکند</div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container">
+    <h1 class="subtitle">در جست‌و‌جوی تفرج‌گاه‌ها</h1>
+    
+    <section class="section-card">
+      <h2 class="mb-3">مقدمه</h2>
+      <p>
+        در این تحلیل، با توجه به فقدان روش‌های مؤثر برای شناسایی مقاصد گردشگری در کشور، بر آن شدیم تا با رویکردی جامع به بررسی این موضوع بپردازیم. در گام‌های ابتدایی، با تحلیل‌های پایه به شناسایی مقاصد سفر، الگوهای مسافرتی و حجم تردد مسافران می‌پردازیم و در ادامه، با به‌کارگیری اصلاحات تدریجی در رویکرد، به تحلیلی کامل‌تر و جامع‌تر خواهیم رسید.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2 class="mb-3">نمودار دایره‌ای ترافیک ورودی و خروجی استان‌ها
+      </h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="viz-container">
+            <div class="viz-header">ترافیک کل</div>
+            <div class="viz-body ratio ratio-1x1">
+              <iframe src="results/regional_traffic_pie.html" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="viz-container">
+            <div class="viz-header">نسبت به جمعیت</div>
+            <div class="viz-body ratio ratio-1x1">
+              <iframe src="results/regional_traffic_pie_normalized.html" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          در این روش، مجموع ترددهای ورودی و خروجی هر استان طی یک بازه زمانی مشخص محاسبه شده و به‌صورت دو نمودار دایره‌ای نمایش داده می‌شود: یکی بر اساس مقدار خام تردد و دیگری نرمال‌شده نسبت به جمعیت استان. نرمال‌سازی امکان مقایسه منصفانه‌تر بین استان‌ها با جمعیت‌های متفاوت را فراهم می‌سازد.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title usage">کاربرد در گردشگری</span>
+        <p class="text-gray-700">
+          افزایش حجم کلی تردد می‌تواند به‌عنوان یک شاخص اولیه برای جذب گردشگر در نظر گرفته شود، چرا که معمولاً ورود مسافران منجر به افزایش رفت‌وآمد در منطقه می‌شود.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title limitations">محدودیت‌ها</span>
+        <p class="text-gray-700">
+          این شاخص علاوه بر به حساب آوردن شهرهای میانی، شامل تمامی انواع سفر، از جمله سفرهای کاری، روزمره یا با اهداف غیرگردشگری نیز می‌شود. بنابراین تفکیک دقیق گردشگران از دیگر مسافران ممکن نیست و باید این موضوع در تحلیل‌ها مد نظر قرار گیرد.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2 class="mb-3">نمودار تغییرات ورودی به شهرها در بازه‌های شش‌ماهه
+      </h2>
+      <div class="viz-container">
+        <div class="viz-body ratio ratio-16x9">
+          <iframe src="results/city_entries_6M.html" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          در این تحلیل، تعداد ورودی افراد به هر شهر در بازه‌های شش‌ماهه ثبت شده و به‌صورت نمودار زمانی نمایش داده می‌شود. این رویکرد امکان بررسی روندهای فصلی و تغییرات در حجم تردد را فراهم می‌سازد.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title usage">کاربرد در گردشگری</span>
+        <p class="text-gray-700">
+          با استفاده از این روش، می‌توان تغییرات فصلی در میزان سفرها را رصد کرد و زمان‌های اوج یا رکود گردشگری را شناسایی نمود؛ برای مثال، افزایش ورودی در فصل تابستان می‌تواند نشانه‌ای از رشد گردشگری تفریحی در آن دوره باشد.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title limitations">محدودیت‌ها</span>
+        <p class="text-gray-700">
+          این شاخص تنها ورود افراد به شهر را نشان می‌دهد، بدون آن‌که بتواند اهداف سفر را مشخص کند؛ در نتیجه، نمی‌توان به‌طور دقیق تشخیص داد که چه میزان از ترددها مربوط به گردشگران واقعی است. همچنین در برخی موارد، ورود ثبت‌شده ممکن است ناشی از عبور ترانزیتی، تعویض مسیر، یا توقف‌های کوتاه باشد که لزوماً به معنی سفر به مقصد آن شهر نیست و می‌تواند در تحلیل نهایی ایجاد انحراف کند.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">نمودار تفاضل ورودی و خروجی شهرها
+      </h2>
+      <div class="viz-container">
+        <div class="viz-body ratio ratio-16x9">
+          <iframe src="results/imbalance.html" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          در این رویکرد، اختلاف تعداد ورودی‌ها و خروجی‌ها برای هر شهر محاسبه می‌شود تا مناطق با خالص ورود یا خروج مسافر شناسایی شوند. این تحلیل تصویری از جابه‌جایی نسبی جمعیت در سطح شهرها ارائه می‌دهد.        
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title usage">کاربرد در گردشگری</span>
+        <p class="text-gray-700">
+          مقادیر مثبت می‌توانند نشان‌دهنده ورود خالص گردشگران و افزایش موقت جمعیت در یک شهر باشند؛ به‌ویژه در مناطق گردشگرپذیر که در دوره‌هایی خاص شاهد افزایش مسافران هستند.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title limitations">محدودیت‌ها</span>
+        <p class="text-gray-700">
+          این شاخص نرمال‌سازی نشده و تحت تأثیر مستقیم اندازه جمعیت و حجم کلی تردد هر شهر قرار دارد. همچنین به‌دلیل حساسیت بالا، خطاهای کوچک در داده‌های ورودی می‌توانند تأثیر چشم‌گیری در نتایج نهایی داشته باشند و تفسیر نمودار را دشوار کنند.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">نقشه‌های کلاسترینگ مراکز استان‌ها</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="viz-container">
+            <div class="viz-header">
+              <span class="year-label">سال ۱۳۹۸</span>
+            </div>
+            <div class="viz-body ratio ratio-1x1">
+              <img src="results/1398_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۳۹۸">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="viz-container">
+            <div class="viz-header">
+              <span class="year-label">سال ۱۳۹۹</span>
+            </div>
+            <div class="viz-body ratio ratio-1x1">
+              <img src="results/1399_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۳۹۹">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="viz-container">
+            <div class="viz-header">
+              <span class="year-label">سال ۱۴۰۰</span>
+            </div>
+            <div class="viz-body ratio ratio-1x1">
+              <img src="results/1400_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۴۰۰">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="viz-container">
+            <div class="viz-header">
+              <span class="year-label">سال ۱۴۰۱</span>
+            </div>
+            <div class="viz-body ratio ratio-1x1">
+              <img src="results/1401_cluster.png" class="img-fluid" alt="کلاسترینگ ۱۴۰۱">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          برای هر مرکز استان، یک بردار ۲۴‌بعدی شامل مجموع ترددهای ورودی و خروجی ماهانه (۱۲ ماه × ۲) ساخته می‌شود. پس از نرمال‌سازی این بردارها برای حذف اثر مقیاس، استان‌هایی با الگوهای زمانی مشابه تردد، با استفاده از الگوریتم‌های خوشه‌بندی در گروه‌هایی مشترک قرار می‌گیرند. نتیجه به‌صورت نقشه‌هایی از گروه‌های مشابه نمایش داده می‌شود.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title usage">کاربرد در گردشگری</span>
+        <p class="text-gray-700">
+          استان‌هایی که در یک گروه قرار می‌گیرند، احتمالاً از نظر الگوی زمانی تردد (فصلی یا ماهانه) مشابه یکدیگر هستند. این می‌تواند نشان‌دهنده شباهت در رفتار گردشگری، فصل‌های اوج سفر یا نوع جذب مسافر باشد و به طراحی سیاست‌های منطقه‌ای کمک کند.
+        </p>
+      </div>
+      <div class="method-description">
+        <span class="method-title limitations">محدودیت‌ها</span>
+        <p class="text-gray-700">
+          از آن‌جا که تمام بردارها نرمال‌سازی شده‌اند، حجم واقعی تردد در تحلیل لحاظ نمی‌شود؛ در نتیجه، استان‌های پرتردد و کم‌تردد ممکن است در یک گروه قرار گیرند. بنابراین این روش برای شناسایی مقاصد اصلی گردشگری مناسب نیست، بلکه صرفاً الگوهای زمانی تردد را مقایسه می‌کند.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">میانگین گردشگری شهرها</h2>
+      <div class="viz-container">
+        <div class="viz-body ratio ratio-16x9">
+          <iframe src="results/Taverage.html" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          در این نقشه، میانگین گردشگری در شهرهای مختلف کشور نمایش داده شده است. رنگ‌ها و اندازه‌های متفاوت نشان‌دهنده سطوح مختلف گردشگری در هر منطقه است.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">میانه گردشگری شهرها</h2>
+      <div class="viz-container">
+        <div class="viz-body ratio ratio-16x9">
+          <iframe src="results/Tmedian.html" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          در این نقشه، میانه گردشگری شهرهای مختلف کشور نمایش داده شده است. استفاده از میانه به جای میانگین می‌تواند تصویر دقیق‌تری از وضعیت معمول تردد ارائه دهد، زیرا میانه کمتر تحت تأثیر داده‌های پرت قرار می‌گیرد.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">درصد مقصد گردشگری بودن شهرها</h2>
+      <div class="viz-container">
+        <div class="viz-body ratio ratio-16x9">
+          <iframe src="results/Tpercent.html" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="method-description">
+        <span class="method-title explanation">توضیح روش</span>
+        <p class="text-gray-700">
+          در این روش، میزان درصدی که هر شهر به عنوان مقصد گردشگری (و نه مبدا) انتخاب شده، آمده‌است. درصد بالا می‌تواند بیانگر همیشگی بودن یک شهر به عنوان مقصد سفر باشد.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">تفرج‌گاه‌ها یا مقاصد گردشگری؟</h2>
+      <p>
+        هدف اصلی پارامتر گردشگری، یافتن «تفرج‌گاه‌»هاست نه صرفاً «مقاصد گردشگری»!
+        میان این دو، تفاوت‌های مهمی وجود دارد. مقصد گردشگری معمولاً دارای جاذبه‌ای خاص است و به‌دلیل توزیع نابرابر این جاذبه‌ها در سطح کشور، اغلب دسترسی دشوارتری دارند. همین امر باعث می‌شود که سفر به آن‌ها بیشتر برنامه‌ریزی‌شده، طولانی‌مدت و با استفاده از وسیله‌هایی مانند هواپیما یا قطار انجام شود.
+      </p>
+      <p>
+        در مقابل، تفرج‌گاه‌ها مکان‌هایی‌اند که برای تغییر حال و هوا و سفرهای کوتاه‌مدت و سریع مورد استفاده قرار می‌گیرند.
+        تفاوت مهم دیگر این است که جاذبه‌های گردشگری معمولاً یک‌بارمصرف هستند؛ یعنی پس از یک‌بار بازدید، انگیزه‌ای برای بازگشت مجدد وجود ندارد. اما تفرج‌گاه‌ها می‌توانند بارها و بارها مورد استفاده قرار گیرند.
+      </p>
+      <p>
+        به‌عنوان نمونه، در ایران افراد بسیاری دارای ویلاهایی در تفرج‌گاه‌ها هستند و حتی هفتگی به آن‌ها سر می‌زنند.
+        با در نظر گرفتن این نکات، ما تمرکز خود را بر یافتن تفرج‌گاه‌ها قرار داده‌ایم.
+      </p>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">روش تحلیل</h2>
+      
+      <div class="method-box mb-4">
+        <h3>روش پایه</h3>
+        <p>
+            <strong>ارزش توریستی = (میانگین زمان خروجی‌ها) − (میانگین زمان ورودی‌ها)</strong><br>
+            محاسبه اختلاف مدت زمان اقامت بین دو گروه:
+        </p>
+        
+        <div>
+            <strong>گردشگران ورودی:</strong>
+            افراد ساکن در <u>شهرهای دیگر</u> که به شهر مورد نظر سفر می‌کنند.
+        </div>
+        
+        <div>
+            <strong>گردشگران خروجی:</strong>
+            ساکنان شهر مورد نظر که به <u>شهرهای دیگر</u> سفر می‌کنند و زمان خود را آنجا می‌گذرانند.
+        </div>
+      </div>
+
+      <div class="method-box mb-4">
+        <h3>بازه‌های نرمال چیست؟</h3>
+        <ul>
+            <li>روزهای عادی (مثلاً دوشنبه‌ها) که <u>در شروع و پایان آنها تعطیلی وجود ندارد</u>.</li>
+            <li>زمانی که انتظار می‌رود اکثر مردم در <u>مکان اصلی سکونت</u> خود باشند.</li>
+            <li>تحلیل داده‌ها فقط در این بازه‌ها انجام می‌شود تا تأثیر عوامل موقت حذف شود.</li>
+        </ul>
+      </div>
+
+      <div class="method-box mb-4">
+        <h3>نسخه دقیق‌تر</h3>
+        <ul>
+            <li><strong>حذف داده‌های نامتعادل:</strong>
+                نادیده گرفتن بازه‌هایی که تعداد ورودی یا خروجی به شدت بیشتر از دیگری است.
+            </li>
+            
+            <li><strong>تمرکز بر داده‌های معتبر:</strong>
+                فقط شهرهایی بررسی می‌شوند که <u>داده‌های کافی</u> از روزهای مختلف داشته باشند.
+            </li>
+            
+            <li><strong>حذف اقامت‌های کوتاه:</strong>
+                فقط بازدیدهایی که بیش از ۱ ساعت در شهر مانده‌اند محاسبه می‌شوند.
+            </li>
+        </ul>
+      </div>
+
+      <div class="method-box mb-4">
+        <h3>مثال</h3>
+        <p>
+            در یک بازه نرمال:<br>
+            - ۱۲۰۰ گردشگر ورودی: میانگین ۱۲ ساعت در شهر بمانند.<br>
+            - ۹۰۰ گردشگر خروجی: میانگین ۸ ساعت در <u>شهرهای مقصد</u> بمانند.<br>
+            - ارزش توریستی = <strong>۴+</strong> (شهر برای گردشگران ورودی جذاب‌تر است)
+        </p>
+      </div>
+
+      <div class="method-box mb-4">
+        <h3>چرا این روش دقیق است؟</h3>
+        <ul>
+            <li>مقایسه‌ی هوشمندانه بین رفتار گردشگران ورودی و خروجی.</li>
+            <li>استفاده از بازه‌های زمانی بدون تأثیر تعطیلات.</li>
+            <li>اندازه‌گیری بر اساس <u>زمان واقعی حضور</u> به جای تعداد صرف.</li>
+        </ul>
+      </div>
+      
+      <div class="accordion mt-4" id="technicalDetails">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTechnical">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTechnical" aria-expanded="false" aria-controls="collapseTechnical">
+              توضیحات فنی
+            </button>
+          </h2>
+          <div id="collapseTechnical" class="accordion-collapse collapse" aria-labelledby="headingTechnical" data-bs-parent="#technicalDetails">
+            <div class="accordion-body">
+              <p class="tech-detail-para">
+                پارامتر Tourism (میزان توریسم) که معرفی می‌کنیم برای یک شهر در یک بازه نرمال (بازه‌ای که انتظار داریم تمام سفرها (تفرّج‌ها) کاملاً در آن انجام شود و دو روز قبل و بعد از شروع بازه، روز کاری است) برابر است با:
+              </p>
+              
+              <div class="formula-box">
+                <span class="math">Tourism</span> <span class="math-eq">=</span> 
+                (<span class="math">hours_out</span> <span class="math-op">÷</span> <span class="math">count_out</span>) 
+                <span class="math-op">−</span> 
+                (<span class="math">hours_in</span> <span class="math-op">÷</span> <span class="math">count_in</span>)
+              </div>
+              
+              <p class="tech-detail-para">
+                انتظار داریم پارامتر Tourism میانگین مدت حضور مسافران در این شهر منهای میانگین مدتی که شهروندان شهر سفر کرده‌اند را نشان دهد.
+              </p>
+              
+              <p class="tech-detail-para">
+                اگر k ماشین در ساعات I<span class="math-sub">1</span>, I<span class="math-sub">2</span>, ..., I<span class="math-sub">k</span> وارد شهر شوند و l ماشین در ساعات O<span class="math-sub">1</span>, O<span class="math-sub">2</span>, ..., O<span class="math-sub">l</span> از شهر خارج شوند، متغیرها اینگونه محاسبه می‌شوند (شروع بازه را ساعت ۰ می‌گیریم):
+              </p>
+              
+              <ul>
+                <li><span class="math">count_in</span> <span class="math-eq">=</span> <span class="math">k</span></li>
+                <li><span class="math">hours_in</span> <span class="math-eq">=</span> <span class="math">I<span class="math-sub">1</span></span> <span class="math-op">+</span> <span class="math">I<span class="math-sub">2</span></span> <span class="math-op">+</span> ... <span class="math-op">+</span> <span class="math">I<span class="math-sub">k</span></span></li>
+                <li><span class="math">count_out</span> <span class="math-eq">=</span> <span class="math">l</span></li>
+                <li><span class="math">hours_out</span> <span class="math-eq">=</span> <span class="math">O<span class="math-sub">1</span></span> <span class="math-op">+</span> <span class="math">O<span class="math-sub">2</span></span> <span class="math-op">+</span> ... <span class="math-op">+</span> <span class="math">O<span class="math-sub">l</span></span></li>
+              </ul>
+              
+              <p class="tech-detail-para">
+                برای مثال فرض کنید که ۳ نفر در ساعات ۲ تا ۱۰ و ۳ تا ۷ و نیز ۲ تا ۸ به شهری سفر کرده باشند و هیچکس از آن شهر به مسافرت نرود، خواهیم داشت:
+              </p>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <ul>
+                    <li><span class="math">count_in</span> <span class="math-eq">=</span> <span class="math">3</span></li>
+                    <li><span class="math">hours_in</span> <span class="math-eq">=</span> <span class="math">2</span> <span class="math-op">+</span> <span class="math">3</span> <span class="math-op">+</span> <span class="math">2</span> <span class="math-eq">=</span> <span class="math">7</span></li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <li><span class="math">count_out</span> <span class="math-eq">=</span> <span class="math">3</span></li>
+                    <li><span class="math">hours_out</span> <span class="math-eq">=</span> <span class="math">10</span> <span class="math-op">+</span> <span class="math">7</span> <span class="math-op">+</span> <span class="math">8</span> <span class="math-eq">=</span> <span class="math">25</span></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="formula-box">
+                <span class="math">Tourism</span> <span class="math-eq">=</span> 
+                <span class="math">25</span> <span class="math-op">÷</span> <span class="math">3</span> 
+                <span class="math-op">−</span> 
+                <span class="math">7</span> <span class="math-op">÷</span> <span class="math">3</span> 
+                <span class="math-eq">=</span> <span class="math">6</span>
+              </div>
+              
+              <p class="tech-detail-para">
+                بنابراین افراد میانگین ۶ ساعت در شهر بوده‌اند که می‌دانیم درست است. (توجه کنید فرمول صرفاً بر اساس ورود و خروج است و مستقل از اینکه واقعاً سفرها به چه صورت باشند کار می‌کند.)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">مقاصد گردشگری فصلی</h2>
+      <div class="viz-container">
+        <div class="viz-body ratio ratio-16x9">
+          <iframe src="results/Season.html" frameborder="0"></iframe>
+        </div>
+      </div>
+      <p>
+        علاوه بر شهرهایی که مشاهده شدند مقاصد گردشگری در کل سال هستند، شهرهایی نیز وجود دارند که تنها به‌صورت فصلی مورد توجه گردشگران قرار می‌گیرند. این مقاصد معمولاً کمتر شناخته‌ شده‌اند و امیدواریم سفر در فصل مناسب به آن‌ها، تجربه‌ای شیرین و متفاوت برایتان رقم بزند.
+      </p>
+    </section>
+    
+    <section class="section-card">
+      <h2 class="mb-3">منابع</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="https://141.ir/" target="_blank" class="d-flex align-items-center"><span class="me-2">سامانه اطلاعات راه‌های کشور (۱۴۱)</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
+        <li class="list-group-item"><a href="https://d-mag.ir/" target="_blank" class="d-flex align-items-center"><span class="me-2">مجله تحلیلی دقیقه</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
+        <li class="list-group-item"><a href="https://www.wikipedia.org/" target="_blank" class="d-flex align-items-center"><span class="me-2">دانشنامه ویکی‌پدیا</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
+        <li class="list-group-item"><a href="https://exceliran.com/" target="_blank" class="d-flex align-items-center"><span class="me-2">اکسل ایران</span><i class="bi bi-box-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+          <p class="mb-3">© 2025 مجله تحلیلی ثانیه - تمامی حقوق محفوظ است.</p>
+          <a href="https://github.com/kaasraarabi/Regression-Analysis" target="_blank" class="github-icon" title="منبع کد پروژه">
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
